@@ -1,6 +1,7 @@
 from flask import Flask
 from dotenv import load_dotenv , dotenv_values
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 db = SQLAlchemy()
 
@@ -12,6 +13,7 @@ def create_api():
     config = dotenv_values()
     
     app = Flask(__name__)
+    CORS(app)
     app.config.from_mapping(config)
     db.init_app(app)
 
